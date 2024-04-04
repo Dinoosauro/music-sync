@@ -1,0 +1,16 @@
+{
+  "name": "MusicSync",
+  "short_name": "MusicSync",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#212529",
+  "theme_color": "#0d6efd",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "./icon.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}

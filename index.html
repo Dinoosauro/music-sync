@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="./icon.svg" />
+  <link rel="apple-touch-icon" href="./icon.png" />
+  <link rel="manifest" href="./manifest.json">
+  <meta name="apple-mobile-web-app-status-bar" content="#212529" />
+  <meta name="theme-color" content="#0d6efd" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MusicSync</title>
+</head>
+
+<body data-bs-theme="dark" style="padding: 10px;">
+  <div id="root"></div>
+  <script>
+    let appVersion = "1.0.0";
+    if ('serviceWorker' in navigator) {
+      let registration;
+      const registerServiceWorker = async () => {
+        registration = await navigator.serviceWorker.register('./service-worker.js', { scope: window.location.href.substring(0, window.location.href.lastIndexOf("/") + 1) });
+      };
+      registerServiceWorker();
+    }
+    fetch("./update.txt", { cache: "no-store" }).then((res) => res.text().then((text) => { if (text.replace("\n", "") !== appVersion) if (confirm(`There's a new version of EasyBackup. Do you want to update? [${appVersion} --> ${text.replace("\n", "")}]`)) { caches.delete("easybackup-cache"); location.reload(true); } }).catch((e) => { console.error(e) })).catch((e) => console.error(e));
+  </script>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
+</html>
