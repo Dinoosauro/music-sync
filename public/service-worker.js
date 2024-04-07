@@ -25,7 +25,7 @@ self.addEventListener('fetch', async (event) => {
 async function networkFirst(req) {
     try {
         const networkResponse = await fetch(req);
-        const cache = await caches.open("easybackup-cache");
+        const cache = await caches.open("musicsync-cache");
         await cache.delete(req);
         await cache.put(req, networkResponse.clone());
         return networkResponse;
