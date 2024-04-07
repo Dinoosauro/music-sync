@@ -1,5 +1,5 @@
 
-const cacheName = 'easybackup-cache';
+const cacheName = 'musicsync-cache';
 const filestoCache = [
     './',
     './index.html',
